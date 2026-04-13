@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="detalle-container">
+  <h1 id="nombre"></h1>
+  <img id="imagen">
+  <p id="precio"></p>
+  <p id="descripcion"></p>
+
+  <button id="btn-ws">Reservar por WhatsApp</button>
+</div>
+
+<script>
+  const prop = JSON.parse(localStorage.getItem("propiedad"));
+
+  document.getElementById("nombre").innerText = prop.nombre;
+  document.getElementById("precio").innerText = prop.precio;
+  document.getElementById("descripcion").innerText = prop.descripcion;
+  document.getElementById("imagen").src = prop.imagenes[0];
+
+  document.getElementById("btn-ws").onclick = () => {
+    const mensaje = `Hola, quiero esta propiedad: ${prop.nombre} - ${prop.precio}`;
+    window.open(`https://wa.me/18495328992?text=${encodeURIComponent(mensaje)}`);
+  }
+</script>
+
+</body>
+</html>

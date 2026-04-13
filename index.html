@@ -1,27 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>INMO KF</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>INMOKF</title>
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<header class="header">
- <img src="logo.png" class="logo">
-</header>
+<!-- LOGO -->
+<img src="logo.png" class="logo">
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Encuentra tu hogar ideal</h1>
-  <p>Propiedades modernas al mejor precio</p>
-</section>
+<h1>Propiedades disponibles</h1>
 
-<!-- PROPIEDADES -->
-<section>
-  <h2>Propiedades disponibles</h2>
-  <div id="lista"></div>
-</section>
+<!-- PROPIEDAD 1 -->
+<div class="propiedad">
+
+  <div class="galeria">
+    <img src="img/solar1.jpg" onclick="abrir(this)">
+    <img src="img/solar2.jpg" onclick="abrir(this)">
+    <img src="img/solar3.jpg" onclick="abrir(this)">
+    <img src="img/solar4.jpg" onclick="abrir(this)">
+    <img src="img/solar5.jpg" onclick="abrir(this)">
+  </div>
+
+  <h2>Solar en venta</h2>
+
+  <p><strong>Ubicación:</strong> San Pedro de Macorís</p>
+  <p><strong>Tamaño:</strong> 253 m²</p>
+  <p><strong>Estado:</strong> Título original</p>
+  <p><strong>Impuestos:</strong> Al día</p>
+
+  <button onclick="abrirFormulario('Solar en venta')">
+    Contactar por WhatsApp
+  </button>
+
+</div>
+
+<!-- PROPIEDAD 2 -->
+<div class="propiedad">
+
+  <div class="galeria">
+    <img src="img/solar6.jpg" onclick="abrir(this)">
+    <img src="img/solar7.jpg" onclick="abrir(this)">
+    <img src="img/solar8.jpg" onclick="abrir(this)">
+    <img src="img/solar9.jpg" onclick="abrir(this)">
+    <img src="img/solar10.jpg" onclick="abrir(this)">
+    <img src="img/solar11.jpg" onclick="abrir(this)">
+    <img src="img/solar12.jpg" onclick="abrir(this)">
+    <img src="img/solar14.jpg" onclick="abrir(this)">
+    <img src="img/solar15.jpg" onclick="abrir(this)">
+    <img src="img/solar16.jpg" onclick="abrir(this)">
+    <img src="img/solar17.jpg" onclick="abrir(this)">
+    <img src="img/solar18.jpg" onclick="abrir(this)">
+    <img src="img/solar19.jpg" onclick="abrir(this)">
+    <img src="img/solar20.jpg" onclick="abrir(this)">
+    <img src="img/solar21.jpg" onclick="abrir(this)">
+  </div>
+
+  <h2>Casa en venta de oportunidad</h2>
+
+  <p><strong>Ubicación:</strong> Condominio Diana 1</p>
+  <p><strong>Tamaño:</strong> 3 hab / 3.5 baños</p>
+  <p><strong>Estado:</strong> Título original</p>
+  <p><strong>Precio:</strong> 6.8 millones</p>
+
+  <button onclick="abrirFormulario('Casa en venta de oportunidad')">
+    Contactar por WhatsApp
+  </button>
+
+</div>
+
+<!-- VISOR -->
+<div id="visor" class="visor">
+  <span onclick="cerrar()">X</span>
+  <img id="imgGrande">
+  <button onclick="anterior()">←</button>
+  <button onclick="siguiente()">→</button>
+</div>
+
+<!-- FORMULARIO -->
+<div id="formulario" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center;">
+  
+  <div style="background:white; padding:20px; border-radius:10px; width:300px; text-align:center;">
+    
+    <h2>Contáctanos</h2>
+
+    <input id="nombre" placeholder="Nombre completo" style="width:100%; margin:10px 0; padding:10px;">
+    
+    <input id="correo" placeholder="Correo" style="width:100%; margin:10px 0; padding:10px;">
+
+    <button onclick="enviarWhatsApp()">Enviar</button>
+
+    <br><br>
+
+    <button onclick="cerrarFormulario()">Cerrar</button>
+
+  </div>
+
+</div>
 
 <script src="script.js"></script>
 

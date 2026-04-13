@@ -1,40 +1,51 @@
-const lista = document.getElementById("lista");
+let imagenes = [];
+let index = 0;
+let propiedad = "";
 
-const propiedades = [
-  {
-    nombre: "Casa en Miami",
-    precio: "$350,000",
-    imagen: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
-  },
-  {
-    nombre: "Apartamento moderno",
-    precio: "$220,000",
-    imagen: "https://images.unsplash.com/photo-1507089947367-19c1da9775ae"
+function abrir(img) {
+  imagenes = Array.from(img.parentElement.children);
+  index = imagenes.indexOf(img);
+  document.getElementById("visor").style.display = "flex";
+  document.getElementById("imgGrande").src = img.src;
+}
+
+function cerrar() {
+  document.getElementById("visor").style.display = "none";
+}
+
+function siguiente() {
+  index = (index + 1) % imagenes.length;
+  document.getElementById("imgGrande").src = imagenes[index].src;
+}
+
+function anterior() {
+  index = (index - 1 + imagenes.length) % imagenes.length;
+  document.getElementById("imgGrande").src = imagenes[index].src;
+}
+
+function abrirFormulario(p) {
+  propiedad = p;
+  document.getElementById("formulario").style.display = "flex";
+}
+
+function cerrarFormulario() {
+  document.getElementById("formulario").style.display = "none";
+}
+
+function enviarWhatsApp() {
+  let nombre = document.getElementById("nombre").value;
+  let correo = document.getElementById("correo").value;
+
+  if(nombre === "" || correo === "") {
+    alert("Llena todos los campos");
+    return;
   }
-];
 
-propiedades.forEach(prop => {
-  const card = document.createElement("div");
-  card.className = "card";
+  let mensaje = "Hola, mi nombre es " + nombre +
+                ", mi correo es " + correo +
+                " y estoy interesado en: " + propiedad;
 
-  card.innerHTML = `
-    <img src="${prop.imagen}">
-    <h3>${prop.nombre}</h3>
-    <p>${prop.precio}</p>
-    <button onclick="reservar('${prop.nombre}', '${prop.precio}')">
-      Reservar
-    </button>
-  `;
-
-  lista.appendChild(card);
-});
-
-function reservar(nombre, precio) {
-  const numero = "+18495328992"; // 🔥 CAMBIA ESTE NÚMERO POR EL TUYO
-
-  const mensaje = `Hola, estoy interesado en la propiedad: ${nombre} con precio ${precio}. ¿Está disponible?`;
-
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  let url = "https://wa.me/18495328992?text=" + encodeURIComponent(mensaje);
 
   window.open(url, "_blank");
 }
